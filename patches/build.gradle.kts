@@ -1,14 +1,14 @@
 group = "app.pokemongo"
 
 patches {
-    // TODO: Update this section with your project details.
     about {
-        name = "Belal Patches"
-        description = "Patches for apps I like"
-        source = "git@github.com:Belal/morphe-patches.git"
-        author = "ABelal Salah"
-        contact = "na"
-        website = "na"
+        name = "Pokémon GO Patches"
+        description = "Morphe patches for Pokémon GO: Google web sign-in for re-signed builds, " +
+            "plus an experimental native throw hook."
+        source = "git@github.com:belalsalah74/pogo1.git"
+        author = "belalsalah74"
+        contact = "https://github.com/belalsalah74/pogo1/issues"
+        website = "https://github.com/belalsalah74/pogo1"
         license = "GPLv3"
     }
 }

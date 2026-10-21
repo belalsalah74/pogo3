@@ -1,12 +1,19 @@
-# 👋🧩 Morphe Patches template
+# 🧩 Pokémon GO Patches for Morphe
 
-Template repository for Morphe Patches.
+Morphe patches for Pokémon GO.
 
 ## ❓ About
 
-Patches for apps I like.
+Patches for Pokémon GO (arm64-v8a, builds 0.433.1 and 0.431.0):
 
-<!-- TODO: Update this about section with a brief introduction/summary about this repo and what it offers. -->
+- **Google web sign-in:** replaces Google Play Services sign-in with a browser-based Google
+  login, so Google accounts work in re-signed builds.
+- **Enhanced throw:** experimental native hook, installed by a small `libmain.so` wrapper.
+- **Spoof signature (ROM support):** only useful on ROMs or microG setups that support
+  signature spoofing.
+
+Patch the `.apkm` (Morphe merges the splits) or a merged APK, then uninstall the Play Store
+version before installing, since the signature differs.
 
 ### How to use these patches
 
@@ -35,13 +42,23 @@ Click here to add these patches to Morphe: https://morphe.software/add-source?gi
 
 ### 🛠️ Building locally
 
-- Run `./gradlew buildAndroid`
+- Build the native libraries first (needs the Android NDK): `ANDROID_NDK_HOME=/path/to/ndk bash native/build.sh`
+- Run `./gradlew :patches:buildAndroid`
 - The built patches .mpp file is found in `patches/build/libs/patches-*.mpp`
 - Patch the mpp file using [Morphe-Desktop](https://github.com/MorpheApp/morphe-desktop)
   like any other patch bundle.
+
+### 🔎 Troubleshooting the native hook
+
+The hook writes its progress to logcat (tag `PGOHOOK431`) and to a file that survives logcat
+eviction. After launching the patched game, read it with:
+
+```
+adb shell cat /sdcard/Android/data/com.nianticlabs.pokemongo/files/pgo_hook.log
+```
 
 See the [Morphe documentation](https://github.com/MorpheApp/morphe-documentation) for more information.
 
 ## 📜 License
 
-UserXYZ Patches are licensed under the [GNU General Public License v3.0](LICENSE)
+Pokémon GO Patches are licensed under the [GNU General Public License v3.0](LICENSE)
